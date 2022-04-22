@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">main</string>
+    <string name="log_in">Вход</string>
+    <string name="sign_up">Регистрация</string>
+    <string name="first_name">Имя пользователя</string>
+    <string name="e_mail">e-mail</string>
+    <string name="choose_sphere">Выберите сферу для бронирования</string>
+    <string name="hi">Привет пользователь!</string>
+    <string name="football">Спорт</string>
+    <string name="cinema">Кино</string>
+    <string name="theatre">Театр</string>
+    <string name="other">Другое</string>
+    <string name="sign_in">Зарегестрироваться</string>
+    <string name="film_name">Название фильма</string>
+    <string name="data">Дата: </string>
+    <string name="registration_for_activity">Зарегестрироваться на событие</string>
+    <string name="read">Прочитать</string>
+    <string name="clear">Очистить</string>
+    <string name="after">Далее</string>
+    <string name="password">Пароль</string>
+
+</resources>

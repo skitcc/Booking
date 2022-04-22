@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tPageBg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/grad"
+    tools:context=".film_page">
+
+    <ImageView
+        android:id="@+id/tPageImage"
+        android:layout_width="337dp"
+        android:layout_height="282dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pauk" />
+
+    <Button
+        android:id="@+id/tbutton2"
+        android:layout_width="131dp"
+        android:layout_height="72dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tPageTitle"
+        android:layout_width="122dp"
+        android:layout_height="58dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/tPageDate"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tPageImage" />
+
+    <TextView
+        android:id="@+id/tPageDate"
+        android:layout_width="122dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="2dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.715"
+        app:layout_constraintStart_toEndOf="@+id/tPageTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tPageImage" />
+
+    <TextView
+        android:id="@+id/tPageDesc"
+        android:layout_width="337dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="70dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:maxLines = "8"
+        android:scrollbars = "vertical"
+        app:layout_constraintBottom_toTopOf="@+id/tbutton2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tPageImage" />
+
+    <TextView
+        android:id="@+id/tPageType"
+        android:layout_width="109dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="3dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/tPageDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tPageImage"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tPageType2"
+        android:layout_width="109dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="3dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/tPageDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tPageImage"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/tread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Read"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tbutton2"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tPageDesc"
+        app:layout_constraintVertical_bias="0.555" />
+
+    <Button
+        android:id="@+id/tclear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tbutton2"
+        app:layout_constraintTop_toBottomOf="@+id/tPageDesc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
