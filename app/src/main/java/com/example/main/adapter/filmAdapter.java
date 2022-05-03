@@ -20,7 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.main.R;
-import com.example.main.film_page;
+import com.example.main.activity.film_page;
 import com.example.main.model.film;
 
 import java.util.ArrayList;

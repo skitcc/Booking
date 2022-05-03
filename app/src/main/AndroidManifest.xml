@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Main">
         <activity
-            android:name=".t_page"
+            android:name=".activity.t_page"
             android:exported="false" />
         <activity
             android:name=".activity.SplashScreen"
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".film_page"
+            android:name=".activity.film_page"
             android:exported="false" />
         <activity
             android:name=".activity.Recycle"

@@ -1,4 +1,4 @@
-package com.example.main;
+package com.example.main.activity;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -15,11 +15,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.main.R;
 import com.example.main.helper.DBHelper;
+
+import java.util.UUID;
 
 public class t_page extends AppCompatActivity {
     DBHelper dbHelper;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tpage);
@@ -33,6 +37,9 @@ public class t_page extends AppCompatActivity {
 
         filmDesc.setMovementMethod(new ScrollingMovementMethod());
 
+
+
+
         filmBG.setBackgroundColor(getIntent().getIntExtra("filmBG",0));
         filmImage.setImageResource(getIntent().getIntExtra("img",0));
         filmTitle.setText(getIntent().getStringExtra("TitleName"));
@@ -44,6 +51,16 @@ public class t_page extends AppCompatActivity {
         Button btn = findViewById(R.id.tbutton2);
         Button btn1 = findViewById(R.id.tread);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
+        class randomStringGenerator {
+            public void main(String[] args) {
+                System.out.println(generateString());
+            }
+
+            public String generateString() {
+                String uuid = UUID.randomUUID().toString();
+                return uuid;
+            }
+        }
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +68,8 @@ public class t_page extends AppCompatActivity {
                 String title_balet = getIntent().getStringExtra("TitleName");
                 String date_balet = getIntent().getStringExtra("date");
                 String place = getIntent().getStringExtra("place");
+                String personal_id1 = new randomStringGenerator().generateString();
+
                 Toast toast = Toast.makeText(getApplicationContext(),"Вы зарегестрировались на " + title_balet + " на дату " + date_balet + " место " + place, Toast.LENGTH_LONG);
                 toast.show();
                 ContentValues contentValues1 = new ContentValues();
@@ -59,7 +78,7 @@ public class t_page extends AppCompatActivity {
                         contentValues1.put(DBHelper.KEY_TITLE_BALET, title_balet);
                         contentValues1.put(DBHelper.KEY_DATE_BALET, date_balet);
                         contentValues1.put(DBHelper.KEY_PLACE, place);
-
+                        contentValues1.put(DBHelper.KEY_PERSONAL_ID1, personal_id1);
 
 
                         database.insert(DBHelper.TABLE_BALETS, null, contentValues1);
@@ -81,13 +100,14 @@ public class t_page extends AppCompatActivity {
                             int TitleBaletIndex = cursor.getColumnIndex(DBHelper.KEY_TITLE);
                             int DateBaletIndex = cursor.getColumnIndex(DBHelper.KEY_DATE);
                             int PlaceIndex = cursor.getColumnIndex(DBHelper.KEY_PLACE);
-
+                            int Pers_Id = cursor.getColumnIndex(DBHelper.KEY_PERSONAL_ID1);
 
                             do {
                                 Log.d("mLog", "ID = " + cursor.getInt(idIndex) +
-                                        ", title = " + cursor.getString(TitleBaletIndex) +
-                                        ", date = " + cursor.getString(DateBaletIndex) +
-                                        ", place = " + cursor.getString(PlaceIndex));
+                                        ", Название: " + cursor.getString(TitleBaletIndex) +
+                                        ", Дата: " + cursor.getString(DateBaletIndex) +
+                                        ", Место: " + cursor.getString(PlaceIndex) +
+                                        ", Ваш персональный номер брони: " + cursor.getString(Pers_Id));
                             } while (cursor.moveToNext());
                         } else {
                             Log.d("mlog", "0 rows");
@@ -103,5 +123,6 @@ public class t_page extends AppCompatActivity {
 
 
         });
+
     }
 }

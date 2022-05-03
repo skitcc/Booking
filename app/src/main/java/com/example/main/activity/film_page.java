@@ -1,4 +1,4 @@
-package com.example.main;
+package com.example.main.activity;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -15,7 +15,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.main.R;
 import com.example.main.helper.DBHelper;
+
+import java.util.UUID;
 
 public class film_page extends AppCompatActivity {
     DBHelper dbHelper;
@@ -46,6 +49,17 @@ public class film_page extends AppCompatActivity {
         Button btn2 = findViewById(R.id.clear);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
+        class randomStringGenerator {
+            public void main(String[] args) {
+                System.out.println(generateString());
+            }
+
+            public String generateString() {
+                String uuid = UUID.randomUUID().toString();
+                return uuid;
+            }
+        }
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +67,9 @@ public class film_page extends AppCompatActivity {
                 String title = getIntent().getStringExtra("TitleName");
                 String date = getIntent().getStringExtra("date");
                 String place = getIntent().getStringExtra("place");
+                String personal_id = new randomStringGenerator().generateString();
+
+
                 ContentValues contentValues1 = new ContentValues();
                 switch (view.getId()){
                     case R.id.button2:
@@ -61,6 +78,7 @@ public class film_page extends AppCompatActivity {
                         contentValues1.put(DBHelper.KEY_TITLE, title);
                         contentValues1.put(DBHelper.KEY_DATE, date);
                         contentValues1.put(DBHelper.KEY_PLACE, place);
+                        contentValues1.put(DBHelper.KEY_PERSONAL_ID, String.valueOf(personal_id));
 
 
                         database.insert(DBHelper.TABLE_TITLE, null, contentValues1);
@@ -83,13 +101,14 @@ public class film_page extends AppCompatActivity {
                             int TitleIndex = cursor.getColumnIndex(DBHelper.KEY_TITLE);
                             int DateIndex = cursor.getColumnIndex(DBHelper.KEY_DATE);
                             int PlaceIndex = cursor.getColumnIndex(DBHelper.KEY_PLACE);
-
+                            int Pers_Id = cursor.getColumnIndex(DBHelper.KEY_PERSONAL_ID);
 
                             do {
                                 Log.d("mLog", "ID = " + cursor.getInt(idIndex) +
-                                        ", title = " + cursor.getString(TitleIndex) +
-                                        ", date = " + cursor.getString(DateIndex) +
-                                        ", place = " + cursor.getString(PlaceIndex));
+                                        ", Название фильма: " + cursor.getString(TitleIndex) +
+                                        ", Дата: " + cursor.getString(DateIndex) +
+                                        ", Место: " + cursor.getString(PlaceIndex) +
+                                        ", Ваш персональный номер брони: " + cursor.getString(Pers_Id));
                             } while (cursor.moveToNext());
                         } else {
                             Log.d("mlog", "0 rows");
