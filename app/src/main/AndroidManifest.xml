@@ -30,9 +30,6 @@
             android:name=".activity.film_page"
             android:exported="false" />
         <activity
-            android:name=".activity.AdminActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.films"
             android:exported="false" />
         <activity
