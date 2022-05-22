@@ -18,6 +18,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.example.main.R;
 import com.example.main.helper.DBHelper;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 public class film_page extends AppCompatActivity {
@@ -33,7 +35,7 @@ public class film_page extends AppCompatActivity {
         TextView filmDate = findViewById(R.id.filmPageDate);
         TextView filmType = findViewById(R.id.filmPageType);
         TextView cur_place = findViewById(R.id.tPagePlace);
-
+//        String s = new SimpleDateFormat("dd апреля"). format(new Date());
         filmDesc.setMovementMethod(new ScrollingMovementMethod());
 
         filmBG.setBackgroundColor(getIntent().getIntExtra("filmBG",0));

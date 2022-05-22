@@ -1,8 +1,13 @@
 package com.example.main.activity;
 
+import android.Manifest;
 import android.content.ContentValues;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -12,16 +17,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 
 import com.example.main.R;
 import com.example.main.helper.DBHelper;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 public class t_page extends AppCompatActivity {
     DBHelper dbHelper;
+
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +53,12 @@ public class t_page extends AppCompatActivity {
         TextView filmType = findViewById(R.id.tPageType);
         TextView place = findViewById(R.id.tPagePlace);
 
+
         filmDesc.setMovementMethod(new ScrollingMovementMethod());
 
 
-
-
-        filmBG.setBackgroundColor(getIntent().getIntExtra("filmBG",0));
-        filmImage.setImageResource(getIntent().getIntExtra("img",0));
+        filmBG.setBackgroundColor(getIntent().getIntExtra("filmBG", 0));
+        filmImage.setImageResource(getIntent().getIntExtra("img", 0));
         filmTitle.setText(getIntent().getStringExtra("TitleName"));
         filmDesc.setText(getIntent().getStringExtra("text"));
         filmDate.setText(getIntent().getStringExtra("date"));
@@ -70,10 +87,10 @@ public class t_page extends AppCompatActivity {
                 String place = getIntent().getStringExtra("place");
                 String personal_id1 = new randomStringGenerator().generateString();
 
-                Toast toast = Toast.makeText(getApplicationContext(),"Вы зарегестрировались на " + title_balet + " на дату " + date_balet + " место " + place, Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), "Вы зарегестрировались на " + title_balet + " на дату " + date_balet + " место " + place, Toast.LENGTH_LONG);
                 toast.show();
                 ContentValues contentValues1 = new ContentValues();
-                switch (view.getId()){
+                switch (view.getId()) {
                     case R.id.tbutton2:
                         contentValues1.put(DBHelper.KEY_TITLE_BALET, title_balet);
                         contentValues1.put(DBHelper.KEY_DATE_BALET, date_balet);
@@ -92,7 +109,7 @@ public class t_page extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                switch (view.getId()){
+                switch (view.getId()) {
                     case R.id.tread:
                         Cursor cursor = database.query(DBHelper.TABLE_BALETS, null, null, null, null, null, null);
                         if (cursor.moveToFirst()) {
@@ -118,11 +135,14 @@ public class t_page extends AppCompatActivity {
                     case R.id.tclear:
                         database.delete(DBHelper.TABLE_BALETS, null, null);
                         break;
-                }dbHelper.close();
+                }
+
             }
 
 
         });
 
     }
+
+
 }

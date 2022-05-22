@@ -10,7 +10,7 @@
     <string name="cinema">Кино</string>
     <string name="theatre">Театр</string>
     <string name="other">Другое</string>
-    <string name="sign_in">Зарегестрироваться</string>
+    <string name="sign_in">Зарегистрироваться</string>
     <string name="film_name">Название фильма</string>
     <string name="data">Дата: </string>
     <string name="registration_for_activity">Зарегестрироваться на событие</string>
