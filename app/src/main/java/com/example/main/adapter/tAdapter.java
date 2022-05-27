@@ -58,7 +58,9 @@ public class tAdapter extends RecyclerView.Adapter<tAdapter.tViewHolder> impleme
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, film_page.class);
-
+                if (holder.place.getText().toString().isEmpty()){
+                    holder.place.setError("Введите ряд и место");
+                } else{
 
                 intent.putExtra("filmBG",Color.parseColor(tlist.get(holder.getAdapterPosition()).getColor()));
                 intent.putExtra("img", imageId);
@@ -70,7 +72,7 @@ public class tAdapter extends RecyclerView.Adapter<tAdapter.tViewHolder> impleme
                 intent.putExtra("place",holder.place.getText().toString());
 
                 context.startActivity(intent);
-            }
+            }}
         });
 
     }

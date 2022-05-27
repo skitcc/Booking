@@ -99,34 +99,44 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
 
     public void onClick(View v){
-        switch (v.getId()){
-            case R.id.btnnext:
-                Intent intent = new Intent(this, ThirdActivity.class);
+        if (edit1.getText().toString().isEmpty() && edit2.getText().toString().isEmpty()){
+            edit1.setError("Поле не может быть пустым");
+            edit2.setError("Поле не может быть пустым");
+        } else {
+            switch (v.getId()) {
+                case R.id.btnnext:
+                    Intent intent = new Intent(this, ThirdActivity.class);
 
-                startActivity(intent);
+                    startActivity(intent);
 
-                break;
-            default:
-                break;
+                    break;
+                default:
+                    break;
 
-        }
+            }}
 
-        String mail = edit2.getText().toString();
-        String password = edit1.getText().toString();
+            String mail = edit2.getText().toString();
+            String password = edit1.getText().toString();
 
-        SQLiteDatabase database = dbHelper.getWritableDatabase();
+            SQLiteDatabase database = dbHelper.getWritableDatabase();
 
-        ContentValues contentValues = new ContentValues();
+            ContentValues contentValues = new ContentValues();
 
         switch (v.getId()) {
+
             case R.id.btnAdd:
+                if (edit1.getText().toString().isEmpty() && edit2.getText().toString().isEmpty()){
+                    edit1.setError("Поле должно быть заполнено");
+                    edit2.setError("Поле должно быть заполнено");
+                } else {
 
-                contentValues.put(DBHelper.KEY_NAME, mail);
-                contentValues.put(DBHelper.KEY_MAIL, password);
 
-                database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
+                    contentValues.put(DBHelper.KEY_NAME, mail);
+                    contentValues.put(DBHelper.KEY_MAIL, password);
 
+                    database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
 
+                }
                 break;
             case R.id.btnRead:
                 Cursor cursor = database.query(DBHelper.TABLE_CONTACTS, null, null, null, null, null, null);

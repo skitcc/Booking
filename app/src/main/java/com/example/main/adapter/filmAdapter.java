@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.main.R;
 import com.example.main.activity.film_page;
+import com.example.main.activity.films;
 import com.example.main.model.film;
 
 import java.util.ArrayList;
@@ -61,13 +62,17 @@ public class filmAdapter extends RecyclerView.Adapter<filmAdapter.FilmViewHolder
         holder.type.setText(films.get(position).getType());
         holder.Description.setText("Описание доступно при выборе события!");
         holder.place.getText().toString();
+
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, film_page.class);
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
-                        (Activity) context,
-                        new Pair<View, String>(holder.img, "filmImage"));
+                if (holder.place.getText().toString().isEmpty()){
+                    holder.place.setError("Введите ряд и место!");
+                } else {
+                    Intent intent = new Intent(context, film_page.class);
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
+                            (Activity) context,
+                            new Pair<View, String>(holder.img, "filmImage"));
 
                 intent.putExtra("filmBG",Color.parseColor(films.get(holder.getAdapterPosition()).getColor()));
                 intent.putExtra("img", imageId);
@@ -79,7 +84,7 @@ public class filmAdapter extends RecyclerView.Adapter<filmAdapter.FilmViewHolder
                 intent.putExtra("id",films.get(holder.getAdapterPosition()).getId());
 
                 context.startActivity(intent, options.toBundle());
-            }
+            }}
         });
 
 
