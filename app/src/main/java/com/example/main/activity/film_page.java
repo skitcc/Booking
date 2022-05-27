@@ -18,8 +18,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.example.main.R;
 import com.example.main.helper.DBHelper;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.UUID;
 
 public class film_page extends AppCompatActivity {
@@ -57,8 +55,7 @@ public class film_page extends AppCompatActivity {
             }
 
             public String generateString() {
-                String uuid = UUID.randomUUID().toString();
-                return uuid;
+                return UUID.randomUUID().toString();
             }
         }
 

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.main.R;
-import com.example.main.adapter.filmAdapter;
 import com.example.main.adapter.tAdapter;
 import com.example.main.model.film;
 

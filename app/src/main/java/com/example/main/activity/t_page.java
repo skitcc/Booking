@@ -1,13 +1,8 @@
 package com.example.main.activity;
 
-import android.Manifest;
 import android.content.ContentValues;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -18,19 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
 
 import com.example.main.R;
 import com.example.main.helper.DBHelper;
 
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 import java.util.UUID;
 
 public class t_page extends AppCompatActivity {

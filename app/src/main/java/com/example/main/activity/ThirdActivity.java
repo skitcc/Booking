@@ -11,7 +11,7 @@ import com.example.main.R;
 
 public class ThirdActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button btnSp, btnCin, btnThe, btnOth;
+    Button btnCin, btnThe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
